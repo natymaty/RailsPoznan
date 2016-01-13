@@ -19,5 +19,13 @@ class EntriesController < ApplicationController
 		entry.update(entry_params)
 		redirect_to(entry_path(entry))
 	end
+	def destroy
+		@entry = Entry.find(params[:id])
+		@entry.destroy
+		redirect_to(entries_path)
+	end
+	def datesomething
+		@days = (Date.parse(params[:date]) - Date.parse(Time.now.to_s)).to_i
+	end
 
 end
